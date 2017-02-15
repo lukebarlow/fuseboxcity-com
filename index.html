@@ -1,0 +1,47 @@
+<html>
+<head>
+  <style>
+
+  body, html {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin : 0px;
+    overflow-y: hidden;
+  }
+
+  body {
+    font-family: sans-serif;
+  }
+
+  h1 {
+    margin-top: 22%;
+  }
+
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+</head>
+<body>
+<center><h1>
+  <span id="fuse" style="color:#777">Fuse</span> 
+  <span id="box" style="color:#777">Box</span> 
+  <span id="city" style="color:#777">City</span></h1></center>
+  <script>
+  var fuseScale = d3.scaleLinear().domain([0, 1]).range(['#ff3333','#0099ff'])
+  var boxScale = d3.scaleLinear().domain([0, 1]).range(['#0099ff','#53ff1a'])
+  var cityScale = d3.scaleLinear().domain([0, 1]).range(['#53ff1a','#ff3333'])
+
+  d3.select(window).on('mousemove', (e) => {
+    var x = d3.event.screenX / window.screen.availWidth
+    var y = d3.event.screenY / window.screen.availHeight
+    d3.select('#fuse').style('color', fuseScale(x))
+    d3.select('#box').style('color', boxScale(x))
+    d3.select('#city').style('color', cityScale(x))
+
+  })
+
+
+
+  </script>
+</body>
+</html>
